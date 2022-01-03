@@ -1,0 +1,16 @@
+##DO NOT REMOVE THIS LINE - to check contact type
+Switzerland=Switzerland
+Base country=Base country
+Germany=other
+Spain=other
+France=other
+Luxembourg=other
+Portugal=other
+Austria=other
+Belgium=other
+Norway=other
+GB=other
+Italy=other
+Sweden=other
+Denmark=other
+Netherlands=other

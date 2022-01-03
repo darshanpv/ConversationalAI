@@ -1,0 +1,8 @@
+#ID,Label,Instruction,Overlay_ID,ImageOrText,Position,Scale,Rotation,Color,Target
+GLUCO_USE,"Step-1","Pleae connect adapter",ID-1,Sample-1.jpg,"10,10,0",1,90,"Red",Glucometer
+GLUCO_USE,"Step-2","Pleae connect adapter",ID-2,Sample-1.jpg,"10,10,0",1,90,"Red",Glucometer
+GLUCO_USE,"Step-3","Pleae connect adapter",ID-3A,Sample-1.jpg,"10,10,0",1,90,"Red",Glucometer,ID-3B,Sample-1.jpg,"10,10,0",1,90,"Red",Glucometer
+GLUCO_USE,"Step-4","Pleae connect adapter",ID-4,"Turn OFF","10,10,0",1,90,"Red",Glucometer
+GLUCO_USE,"Step-5","Pleae connect adapter",ID-5,Sample-1.jpg,"10,10,0",1,90,"Red",Glucometer
+GLUCO_USE,"Step-6","Pleae connect adapter",ID-6,Sample-1.jpg,"10,10,0",1,90,"Red",Glucometer
+

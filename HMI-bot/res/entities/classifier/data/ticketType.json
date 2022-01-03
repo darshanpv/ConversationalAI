@@ -1,0 +1,28 @@
+{
+	"domain": "ticketType",
+	"classes": [{
+		"name": "trip",
+		"utterances": ["I want to book a ticket",
+		"I want to travel",
+		"Can you book me on plane",
+		"Need a reservation of ticket",
+		"Can you do a reservation for me",
+		"Need to plan a trip"]
+	},
+	{
+		"name": "weather",
+		"utterances": ["How is weather",
+		"Tell me the temperature",
+		"Please tell me temperature in city",
+		"Will it be cold in city"]
+	},
+	{
+		"name": "wiki",
+		"utterances": ["Can you tell me more information",
+		"Need to know wiki details of city",
+		"Please tell me more about",
+		"Tell me more about",
+		"can you tell me background details of city"]
+	}
+	]
+}

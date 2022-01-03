@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<n:dialog xsi:schemaLocation="http://cto.net/hmi schema1.xsd" xmlns:n="http://cto.net/hmi/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="insurance">
+	<startTaskName>start</startTaskName>
+	<globalLanguage>en</globalLanguage>
+	<useSODA>true</useSODA>
+	<allowSwitchTasks>true</allowSwitchTasks>
+	<allowOverAnswering>true</allowOverAnswering>
+	<allowDifferentQuestion>true</allowDifferentQuestion>
+	<allowCorrection>true</allowCorrection>
+	<tasks>
+		<task name="start">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>hello</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos>
+				<ito name="welcome">
+					<AQD>
+						<type>
+							<answerType>open_ended</answerType>
+						</type>
+					</AQD>
+					<fallback_question>How may I help you?</fallback_question>
+					<required>true</required>
+				</ito>
+			</itos>
+		</task>
+		<task name="appointment">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>schedule meeting</word>
+					<word>schedule * meeting</word>
+					<word>appointment</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos>
+				<ito name="getTime">
+					<AQD>
+						<type>
+							<answerType>custom.pattern_1</answerType>
+						</type>
+					</AQD>
+					<fallback_question>what time do you want to have this meeting?</fallback_question>
+					<required>true</required>
+				</ito>
+				<ito name="getDate">
+					<AQD>
+						<type>
+							<answerType>custom.temporal.date</answerType>
+						</type>
+					</AQD>
+					<fallback_question>what day you want to have this meeting?</fallback_question>
+					<required>true</required>
+				</ito>
+			</itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Your appointment has been scheduled now on %getDate at %getTime.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="mailSupport">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>mail|email support|supports</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos></itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Send your email here to support.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="mailClaim">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>mail|email claim|claims|claimrep|claimsrep</word>				
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos></itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Send your email here to claims.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="mailBroker">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>mail|email broker</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos>
+			</itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Send your email here to broker.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="mailIndividual">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>mail|email *</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos>
+				<ito name="getName">
+				   <AQD>
+					  <type>
+						 <answerType>sys.person.firstname</answerType>
+					  </type>
+				   </AQD>
+				   <fallback_question>what is name or team you want to contact?</fallback_question>
+				   <required>true</required>
+				</ito>
+			</itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Send your email here to %getName.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="textSupport">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>text|message|sms support|supports</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos></itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Send your text here to support.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="textClaim">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>text|sms|message claim|claims|claimrep|claimsrep</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos></itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Send your text here to claims.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="textBroker">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>text|sms|message broker</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos>
+			</itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Send your text here to broker.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="textIndividual">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>text|sms|message *</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos>
+				<ito name="getName">
+				   <AQD>
+					  <type>
+						 <answerType>sys.person.firstname</answerType>
+					  </type>
+				   </AQD>
+				   <fallback_question>what is name or team you want to contact?</fallback_question>
+				   <required>true</required>
+				</ito>
+			</itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Send your text here to %getName.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="callSupport">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>call|speak|phone|reach|touch support</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos></itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Calling support.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="callClaim">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>call|speak|phone|reach|touch claim|claims|claimrep|claimsrep</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos></itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Calling claims.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="callBroker">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>call|speak|phone|touch broker</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos>
+			</itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Calling broker.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="callIndividual">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>call|speak|phone|reach|touch *</word>				
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos>
+				<ito name="getName">
+				   <AQD>
+					  <type>
+						 <answerType>sys.person.firstname</answerType>
+					  </type>
+				   </AQD>
+				   <fallback_question>what is name or team you want to contact?</fallback_question>
+				   <required>true</required>
+				</ito>
+			</itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Calling %getName.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="contactSupport">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>contact support</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos></itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Here are the contact details of support.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="contactClaim">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>contact claim|claims|claimrep|claimsrep</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos></itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Here are the contact details of claims.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="contactBroker">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>contact broker</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos>
+			</itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Here are contact details of broker.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="contactIndividual">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>contact *</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos>
+				<ito name="getName">
+				   <AQD>
+					  <type>
+						 <answerType>sys.person.firstname</answerType>
+					  </type>
+				   </AQD>
+				   <fallback_question>what is name or team you want to contact?</fallback_question>
+				   <required>true</required>
+				</ito>
+			</itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Here are the contact details of %getName.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="contactPage">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>contact</word>
+					<word>contacts</word>
+					<word>call</word>
+					<word>speak</word>
+					<word>text</word>
+					<word>sms</word>
+					<word>email</word>
+					<word>mail</word>
+					<word>phone</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos></itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Here is contact details.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="claimAmount">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>claim|claims amount</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos>
+				<ito name="getType">
+					<AQD>
+						<type>
+							<answerType>custom.item_4</answerType>
+						</type>
+					</AQD>
+					<fallback_question>what type is your policy?</fallback_question>
+					<required>true</required>
+					<useContext>true</useContext>
+				</ito>
+			</itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Here is detail on claim amount for your %getType policy.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="coveragePage">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>deductible|coverage|limit * policy|policies</word>
+					<word>payment coverage</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos>
+				<ito name="getType">
+					<AQD>
+						<type>
+							<answerType>custom.item_4</answerType>
+						</type>
+					</AQD>
+					<fallback_question>what type is your policy?</fallback_question>
+					<required>true</required>
+					<useContext>true</useContext>
+				</ito>
+			</itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Here are the details on your %getType policy.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="allCoverages">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>show|see|list|pull|view|find coverages</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos></itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Here are the details on your coverages.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="policyDate">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>effective|issue date</word>
+					<word>policy renew</word>
+					<word>policy expires</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos>
+				<ito name="getType">
+					<AQD>
+						<type>
+							<answerType>custom.item_4</answerType>
+						</type>
+					</AQD>
+					<fallback_question>what type is your policy?</fallback_question>
+					<required>true</required>
+					<useContext>true</useContext>
+				</ito>
+			</itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Here is the detail about your %getType policy.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="listSummary">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>summary insurance</word>
+					<word>insurance summary</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos></itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Here is your insurance summary.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="listIdCard">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>auto id</word>
+					<word>id card</word>
+					<word>proof insurance *</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos></itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Here is your id card.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="listClaim">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>claim|claims summary</word>
+					<word>how open claim|claims</word>
+					<word>show open claim|claims</word>
+					<word>claim|claims opened</word>
+					<word>claim|claims date</word>
+					<word>show|see|list|pull|view|find claim|claims</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos></itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Here is your claims summary.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>	
+		<task name="listPolicy">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>show|list|pull|view|find policy|policies</word>
+					<word>policy document</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos></itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Here is your policy page.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="getDocument">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>show|list|pull|view|find document|documents</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos>
+				<ito name="getDocType">
+					<AQD>
+						<type>
+							<answerType>custom.item_3</answerType>
+						</type>
+					</AQD>
+					<fallback_question>which type of document are you looking at?</fallback_question>
+					<required>true</required>
+					<useContext>true</useContext>
+				</ito>
+			</itos>
+			<action>
+				<groovyAction>
+					<resultMappings>
+						<resultMapping>
+							<message></message>
+							<redirectToTask>listPolicy</redirectToTask>
+							<resultValue>1</resultValue>
+							<resultVarName>action</resultVarName>
+						</resultMapping>
+						<resultMapping>
+							<message></message>
+							<redirectToTask>listClaim</redirectToTask>
+							<resultValue>2</resultValue>
+							<resultVarName>action</resultVarName>
+						</resultMapping>
+						<resultMapping>
+							<message></message>
+							<redirectToTask>listCertificate</redirectToTask>
+							<resultValue>3</resultValue>
+							<resultVarName>action</resultVarName>
+						</resultMapping>
+						<resultMapping>
+							<message></message>
+							<redirectToTask>listEndorsement</redirectToTask>
+							<resultValue>4</resultValue>
+							<resultVarName>action</resultVarName>
+						</resultMapping>
+						<resultMapping>
+							<message></message>
+							<redirectToTask>listIdCard</redirectToTask>
+							<resultValue>5</resultValue>
+							<resultVarName>action</resultVarName>
+						</resultMapping>
+						<resultMapping>
+							<message></message>
+							<redirectToTask>listSummary</redirectToTask>
+							<resultValue>6</resultValue>
+							<resultVarName>action</resultVarName>
+						</resultMapping>
+						<resultMapping>
+							<message>I did not get it.</message>
+							<redirectToTask>getDocument</redirectToTask>
+							<resultValue>7</resultValue>
+							<resultVarName>action</resultVarName>
+						</resultMapping>
+					</resultMappings>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate/>
+					<code>
+						<![CDATA[
+					   Integer action = new Integer(7);
+					   String type=new String(frame.get("getDocType"));
+					   if (type.matches("(?i)^.*?\\b(policy|policies)\\b.*?"))
+					   action = 1;
+					   else if (type.matches("(?i)^.*?\\b(claim|claims)\\b.*?"))
+					   action = 2;
+					   else if (type.matches("(?i)^.*?\\b(certificate|certificates)\\b.*?"))
+					   action = 3;
+					   else if (type.matches("(?i)^.*?\\b(endorsement|endorsements)\\b.*?"))
+					   action = 4;
+					   else if (type.matches("(?i)^.*?\\b(id card|id cards)\\b.*?"))
+					   action = 5;
+					   else if (type.matches("(?i)^.*?\\b(summary|insurance)\\b.*?"))
+					   action = 6;
+					   executionResults.put("action",action.toString());
+						]]>
+					</code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="createNewEndorsement">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>new|create endorsement|endorsements</word>
+					<word>add * policy</word>
+					<word>add model * policy</word>
+					<word>add * umbrella policy</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos>
+				<ito name="getItem">
+					<AQD>
+						<type>
+							<answerType>custom.item_2</answerType>
+						</type>
+					</AQD>
+					<fallback_question>what do you want me to add as your new endorsement?</fallback_question>
+					<required>true</required>
+					<useContext>false</useContext>
+				</ito>
+			</itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Please enter the details here for your %getItem endorsement.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="listEndorsement">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>show|list|pull|view|find endorsement|endorsements</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos></itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Here is list of your endorsements.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="endorsementDetails">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>endorsement|endorsements</word>
+					<word>endorsements</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos>
+				<ito name="getOption">
+					<AQD>
+						<type>
+							<answerType>custom.item_1</answerType>
+						</type>
+					</AQD>
+					<fallback_question>are you looking for list of endorsement or you want to add new endorsement?</fallback_question>
+					<required>true</required>
+				</ito>
+			</itos>
+			<action>
+				<groovyAction>
+					<resultMappings>
+						<resultMapping>
+							<message></message>
+							<redirectToTask>listEndorsement</redirectToTask>
+							<resultValue>1</resultValue>
+							<resultVarName>action</resultVarName>
+						</resultMapping>
+						<resultMapping>
+							<message></message>
+							<redirectToTask>createNewEndorsement</redirectToTask>
+							<resultValue>2</resultValue>
+							<resultVarName>action</resultVarName>
+						</resultMapping>
+						<resultMapping>
+							<message>I did not get it.</message>
+							<redirectToTask>endorsementDetails</redirectToTask>
+							<resultValue>3</resultValue>
+							<resultVarName>action</resultVarName>
+						</resultMapping>
+					</resultMappings>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate/>
+					<code>
+						<![CDATA[
+					   Integer action = new Integer(3);
+					   String type=new String(frame.get("getOption"));
+					   if (type.matches("(?i)^.*?\\b(list)\\b.*?"))
+					   action = 1;
+					   else if (type.matches("(?i)^.*?\\b(new)\\b.*?"))
+					   action = 2;
+					   executionResults.put("action",action.toString());
+						]]>
+					</code>
+				</groovyAction>
+			</action>
+		</task>
+		<task name="createNewCertificate">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>new|create|generate certificate|certificates</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos></itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Please enter the details here for new certificate creation.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="listCertificate">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>show|list|pull|view|find certificate|certficates</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos></itos>
+			<action>
+				<groovyAction>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate>Here is list of your certificates.</utteranceTemplate>
+					<code></code>
+				</groovyAction>
+ 			</action>
+		</task>
+		<task name="certificateDetails">
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>certificate|certificates</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<itos>
+				<ito name="getOption">
+					<AQD>
+						<type>
+							<answerType>custom.item_1</answerType>
+						</type>
+					</AQD>
+					<fallback_question>are you looking for list of certificate or you want to add new certificate ?</fallback_question>
+					<required>true</required>
+				</ito>
+			</itos>
+			<action>
+				<groovyAction>
+					<resultMappings>
+						<resultMapping>
+							<message></message>
+							<redirectToTask>listCertificate</redirectToTask>
+							<resultValue>1</resultValue>
+							<resultVarName>action</resultVarName>
+						</resultMapping>
+						<resultMapping>
+							<message></message>
+							<redirectToTask>createNewCertificate</redirectToTask>
+							<resultValue>2</resultValue>
+							<resultVarName>action</resultVarName>
+						</resultMapping>
+						<resultMapping>
+							<message>I did not get it.</message>
+							<redirectToTask>certificateDetails</redirectToTask>
+							<resultValue>3</resultValue>
+							<resultVarName>action</resultVarName>
+						</resultMapping>
+					</resultMappings>
+					<returnAnswer>true</returnAnswer>
+					<utteranceTemplate/>
+					<code>
+						<![CDATA[
+					   Integer action = new Integer(3);
+					   String type=new String(frame.get("getOption"));
+					   if (type.matches("(?i)^.*?\\b(list)\\b.*?"))
+					   action = 1;
+					   else if (type.matches("(?i)^.*?\\b(new)\\b.*?"))
+					   action = 2;
+					   executionResults.put("action",action.toString());
+						]]>
+					</code>
+				</groovyAction>
+			</action>
+		</task>
+		<task name="cancelTask">
+			<act>seek</act>
+			<selector>
+				<bagOfWordsTaskSelector>
+					<word>cancel task</word>
+					<word>close task</word>
+					<word>exit task</word>
+					<word>bye</word>
+					<word>exit</word>
+				</bagOfWordsTaskSelector>
+			</selector>
+			<followup>
+				<ito name="cancelDecision">
+					<AQD>
+						<type>
+							<answerType>decision</answerType>
+						</type>
+					</AQD>
+					<fallback_question>Do you want to cancel the task?</fallback_question>
+					<required>true</required>
+				</ito>
+				<answerMapping>
+					<item key="YES">start</item>
+				</answerMapping>
+			</followup>
+			<action>
+				<groovyAction>
+					<returnAnswer>false</returnAnswer>
+					<utteranceTemplate></utteranceTemplate>
+					<code></code>
+				</groovyAction>
+			</action>
+		</task>
+	</tasks>
+</n:dialog>

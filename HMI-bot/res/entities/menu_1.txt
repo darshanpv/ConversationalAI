@@ -1,0 +1,10 @@
+##DO NOT REMOVE THIS LINE - to check contact type
+Configure=Configure
+set up=Configure
+install=Configure
+troubleshooting=Troubleshooting
+troubleshoot=Troubleshooting
+Contact Support=Contact Support
+help desk=Contact Support
+support=Contact Support
+Others
